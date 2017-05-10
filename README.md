@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/LosIsotopos/jrpg-2017a-servidor.svg?branch=master)](https://travis-ci.org/LosIsotopos/jrpg-2017a-servidor)
 # World Of Middle Earth (WOME) - servidor
 
 ## Sobre las personas
@@ -12,14 +13,15 @@
 
 ### Integrantes del equipo
 
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
+* Ezequiel Laurenti ([ezelau95](https://github.com/ezelau95))
+* Fernando Queirolo ([fernandoq96](https://github.com/fernandoq96))
+* Pablo Raimondo ([PabloRai](https://github.com/PabloRai))
+* Nicolás Sapaya ([NicolasSap](https://github.com/NicolasSap))
 
 ## Sobre la tecnología
+* Java 1.8
+* JUnit 4
+
 
 ### Herramientas utilizadas
 
