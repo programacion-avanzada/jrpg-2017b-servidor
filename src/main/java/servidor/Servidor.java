@@ -1,6 +1,7 @@
 package servidor;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -57,7 +58,7 @@ public class Servidor extends Thread {
 		ventana.setResizable(false);
 		ventana.setLocationRelativeTo(null);
 		ventana.setLayout(null);
-
+		ventana.setIconImage(Toolkit.getDefaultToolkit().getImage("src/main/java/servidor/server.png"));
 		JLabel titulo = new JLabel("Log del servidor...");
 		titulo.setFont(new Font("Courier New", Font.BOLD, 16));
 		titulo.setBounds(10, 0, 200, 30);
