@@ -180,7 +180,7 @@ public class Conector {
 			return false;
 
 		} catch (SQLException e) {
-			Servidor.log.append("El usuario " + user.getUsername() + " fallo al iniciar sesi�n." + System.lineSeparator());
+			Servidor.log.append("El usuario " + user.getUsername() + " fallo al iniciar sesión." + System.lineSeparator());
 			e.printStackTrace();
 			return false;
 		}
