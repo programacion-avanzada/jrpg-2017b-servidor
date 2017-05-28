@@ -1,5 +1,6 @@
 package servidor;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -213,7 +214,7 @@ public class Conector {
 		
 	}
 
-	public PaquetePersonaje getPersonaje(PaqueteUsuario user) {
+	public PaquetePersonaje getPersonaje(PaqueteUsuario user) throws IOException {
 		ResultSet result = null;
 		try {
 			// Selecciono el personaje de ese usuario
