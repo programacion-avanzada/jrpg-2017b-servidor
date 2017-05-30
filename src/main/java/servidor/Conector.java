@@ -216,6 +216,9 @@ public class Conector {
 
 	public PaquetePersonaje getPersonaje(PaqueteUsuario user) throws IOException {
 		ResultSet result = null;
+		ResultSet resultadoItemsID = null;
+		ResultSet resultadoDatoItem = null;
+		int i = 2;
 		try {
 			// Selecciono el personaje de ese usuario
 			PreparedStatement st = connect.prepareStatement("SELECT * FROM registro WHERE usuario = ?");
@@ -230,7 +233,14 @@ public class Conector {
 					.prepareStatement("SELECT * FROM personaje WHERE idPersonaje = ?");
 			stSeleccionarPersonaje.setInt(1, idPersonaje);
 			result = stSeleccionarPersonaje.executeQuery();
-
+			// Traigo los id de los items correspondientes a mi personaje
+			PreparedStatement stDameItemsID = connect.prepareStatement("SELECT * FROM mochila WHERE idMochila = ?");
+			stDameItemsID.setInt(1, idPersonaje);
+			resultadoItemsID = stDameItemsID.executeQuery();
+			// Traigo los datos del item
+			PreparedStatement stDatosItem = connect.prepareStatement("SELECT * FROM item WHERE idItem = ?");
+			
+			
 			// Obtengo los atributos del personaje
 			PaquetePersonaje personaje = new PaquetePersonaje();
 			personaje.setId(idPersonaje);
@@ -244,6 +254,18 @@ public class Conector {
 			personaje.setNombre(result.getString("nombre"));
 			personaje.setExperiencia(result.getInt("experiencia"));
 			personaje.setNivel(result.getInt("nivel"));
+
+			while (resultadoItemsID.getInt(i) != -1) {
+				stDatosItem.setInt(1, resultadoItemsID.getInt(i));
+				resultadoDatoItem = stDatosItem.executeQuery();
+				personaje.anadirItem(resultadoDatoItem.getInt("idItem"), resultadoDatoItem.getString("nombre"),
+						resultadoDatoItem.getInt("wereable"), resultadoDatoItem.getInt("bonusSalud"),
+						resultadoDatoItem.getInt("bonusEnergia"), resultadoDatoItem.getInt("bonusFuerza"),
+						resultadoDatoItem.getInt("bonusDestreza"), resultadoDatoItem.getInt("bonusInteligencia"),
+						resultadoDatoItem.getString("foto"), resultadoDatoItem.getString("fotoEquipado"));
+				i++;
+			}
+			
 
 			// Devuelvo el paquete personaje con sus datos
 			return personaje;
