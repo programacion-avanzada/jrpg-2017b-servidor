@@ -219,6 +219,7 @@ public class Conector {
 		ResultSet resultadoItemsID = null;
 		ResultSet resultadoDatoItem = null;
 		int i = 2;
+		int j = 0;
 		try {
 			// Selecciono el personaje de ese usuario
 			PreparedStatement st = connect.prepareStatement("SELECT * FROM registro WHERE usuario = ?");
@@ -255,15 +256,18 @@ public class Conector {
 			personaje.setExperiencia(result.getInt("experiencia"));
 			personaje.setNivel(result.getInt("nivel"));
 
-			while (resultadoItemsID.getInt(i) != -1) {
-				stDatosItem.setInt(1, resultadoItemsID.getInt(i));
-				resultadoDatoItem = stDatosItem.executeQuery();
-				personaje.anadirItem(resultadoDatoItem.getInt("idItem"), resultadoDatoItem.getString("nombre"),
-						resultadoDatoItem.getInt("wereable"), resultadoDatoItem.getInt("bonusSalud"),
-						resultadoDatoItem.getInt("bonusEnergia"), resultadoDatoItem.getInt("bonusFuerza"),
-						resultadoDatoItem.getInt("bonusDestreza"), resultadoDatoItem.getInt("bonusInteligencia"),
-						resultadoDatoItem.getString("foto"), resultadoDatoItem.getString("fotoEquipado"));
+			while (j <= 9) {
+				if(resultadoItemsID.getInt(i) != -1) {
+					stDatosItem.setInt(1, resultadoItemsID.getInt(i));
+					resultadoDatoItem = stDatosItem.executeQuery();
+					personaje.anadirItem(resultadoDatoItem.getInt("idItem"), resultadoDatoItem.getString("nombre"),
+							resultadoDatoItem.getInt("wereable"), resultadoDatoItem.getInt("bonusSalud"),
+							resultadoDatoItem.getInt("bonusEnergia"), resultadoDatoItem.getInt("bonusFuerza"),
+							resultadoDatoItem.getInt("bonusDestreza"), resultadoDatoItem.getInt("bonusInteligencia"),
+							resultadoDatoItem.getString("foto"), resultadoDatoItem.getString("fotoEquipado"));
+				}
 				i++;
+				j++;
 			}
 			
 
