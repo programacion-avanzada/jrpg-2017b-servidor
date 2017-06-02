@@ -225,6 +225,7 @@ public class EscuchaCliente extends Thread {
 					
 					break;
 				
+					
 				default:
 					break;
 				}
