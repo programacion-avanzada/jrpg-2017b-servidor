@@ -11,7 +11,7 @@ sourceCompatibility = 1.7
 version = '0.1'
 test.ignoreFailures = true
 
-defaultTasks 'clean', 'compileJava', 'test', 'checkstyleMain', 'pmd', 'findbugsMain', 'jacocoTestReport'
+defaultTasks 'clean', 'compileJava', 'fatJar', 'test', 'checkstyleMain', 'pmd', 'findbugsMain', 'jacocoTestReport'
 
 repositories {
 	mavenCentral()
@@ -87,7 +87,21 @@ task pmd (dependsOn: compileJava) << {
 findbugs {
     ignoreFailures = true
 }
+task fatJar(type: Jar) {
+	manifest { 
+    	attributes "Main-Class": "servidor.Servidor"
+  	}
 
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    from('src/main/java/frames') {
+    	include '*.png'
+    	include '*.jpg'
+    	into 'frames'
+  	}
+ 	
+    with jar
+}
 
 jacocoTestReport {
     reports {
