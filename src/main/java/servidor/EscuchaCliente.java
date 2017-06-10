@@ -219,6 +219,7 @@ public class EscuchaCliente extends Thread {
 					Servidor.getPersonajesConectados().remove(paquetePersonaje.getId());
 					Servidor.getPersonajesConectados().put(paquetePersonaje.getId(), paquetePersonaje);
 					paquetePersonaje.ponerBonus();
+					paquetePersonaje.sacarUltimoItem();
 					for(EscuchaCliente conectado : Servidor.getClientesConectados()) {
 						conectado.getSalida().writeObject(gson.toJson(paquetePersonaje));
 					}
@@ -229,7 +230,7 @@ public class EscuchaCliente extends Thread {
 					Servidor.getConector().actualizarInventario(paquetePersonaje);
 					Servidor.getPersonajesConectados().remove(paquetePersonaje.getId());
 					Servidor.getPersonajesConectados().put(paquetePersonaje.getId(), paquetePersonaje);
-					paquetePersonaje.ponerBonus();
+					
 					for(EscuchaCliente conectado : Servidor.getClientesConectados()) {
 						conectado.getSalida().writeObject(gson.toJson(paquetePersonaje));
 					}
