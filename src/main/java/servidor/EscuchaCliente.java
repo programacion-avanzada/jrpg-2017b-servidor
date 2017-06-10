@@ -236,6 +236,19 @@ public class EscuchaCliente extends Thread {
 					}
 					break;
 					
+				case Comando.ACTUALIZARPERSONAJELV:
+					paquetePersonaje = (PaquetePersonaje) gson.fromJson(cadenaLeida, PaquetePersonaje.class);
+					Servidor.getConector().actualizarPersonajeSubioNivel(paquetePersonaje);
+					
+					Servidor.getPersonajesConectados().remove(paquetePersonaje.getId());
+					Servidor.getPersonajesConectados().put(paquetePersonaje.getId(), paquetePersonaje);
+					paquetePersonaje.ponerBonus();
+					for(EscuchaCliente conectado : Servidor.getClientesConectados()) {
+						conectado.getSalida().writeObject(gson.toJson(paquetePersonaje));
+					}
+					
+					break;	
+					
 				default:
 					break;
 				}

@@ -365,4 +365,28 @@ public class Conector {
 		
 		
 	}
+
+	public void actualizarPersonajeSubioNivel(PaquetePersonaje paquetePersonaje) {
+		try {
+			PreparedStatement stActualizarPersonaje = connect
+					.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=? "
+							+ "  WHERE idPersonaje=?");
+			
+			stActualizarPersonaje.setInt(1, paquetePersonaje.getFuerza());
+			stActualizarPersonaje.setInt(2, paquetePersonaje.getDestreza());
+			stActualizarPersonaje.setInt(3, paquetePersonaje.getInteligencia());
+			stActualizarPersonaje.setInt(4, paquetePersonaje.getSaludTope());
+			stActualizarPersonaje.setInt(5, paquetePersonaje.getEnergiaTope());
+			stActualizarPersonaje.setInt(6, paquetePersonaje.getExperiencia());
+			stActualizarPersonaje.setInt(7, paquetePersonaje.getNivel());
+			stActualizarPersonaje.setInt(8, paquetePersonaje.getId());
+			
+			stActualizarPersonaje.executeUpdate();
+			
+			Servidor.log.append("El personaje " + paquetePersonaje.getNombre() + " se ha actualizado con éxito."  + System.lineSeparator());;
+		} catch (SQLException e) {
+			Servidor.log.append("Fallo al intentar actualizar el personaje " + paquetePersonaje.getNombre()  + System.lineSeparator());
+			e.printStackTrace();
+		}
+	}
 }
