@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -190,7 +191,8 @@ public class Conector {
 
 	public void actualizarPersonaje(PaquetePersonaje paquetePersonaje) {
 		try {
-			int i = 0;
+			int i = 2;
+			int j = 1;
 			PreparedStatement stActualizarPersonaje = connect
 					.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=? "
 							+ "  WHERE idPersonaje=?");
@@ -203,37 +205,29 @@ public class Conector {
 			stActualizarPersonaje.setInt(6, paquetePersonaje.getExperiencia());
 			stActualizarPersonaje.setInt(7, paquetePersonaje.getNivel());
 			stActualizarPersonaje.setInt(8, paquetePersonaje.getId());
-			
 			stActualizarPersonaje.executeUpdate();
-			//Si mi lista esta vacia significa que no gano ningun item
-			//Si ya tenia items, pero mi ultimo item no tiene nombre null significa que tampoco es un item nuevo
-			if (paquetePersonaje.getCantItems() != 0 && paquetePersonaje.nuevoItem()) {
-				PreparedStatement obtenerDatosItem = connect.prepareStatement("SELECT * FROM item WHERE idItem = ?");
-				obtenerDatosItem.setInt(1, paquetePersonaje.getItemID(paquetePersonaje.getCantItems() - 1));
-				// Obtengo los verdaderos datos del item
-				ResultSet resultadoDatoItem = null;
-				resultadoDatoItem = obtenerDatosItem.executeQuery();
-				if (resultadoDatoItem.next()) {
-					paquetePersonaje.removerUltimoItem();
-					paquetePersonaje.anadirItem(resultadoDatoItem.getInt("idItem"),
-							resultadoDatoItem.getString("nombre"), resultadoDatoItem.getInt("wereable"),
-							resultadoDatoItem.getInt("bonusSalud"), resultadoDatoItem.getInt("bonusEnergia"),
-							resultadoDatoItem.getInt("bonusFuerza"), resultadoDatoItem.getInt("bonusDestreza"),
-							resultadoDatoItem.getInt("bonusInteligencia"), resultadoDatoItem.getString("foto"),
-							resultadoDatoItem.getString("fotoEquipado"));
+
+			
+			PreparedStatement stDameItemsID = connect.prepareStatement("SELECT * FROM mochila WHERE idMochila = ?");
+			stDameItemsID.setInt(1, paquetePersonaje.getId());
+			ResultSet resultadoItemsID = stDameItemsID.executeQuery();
+			PreparedStatement stDatosItem = connect.prepareStatement("SELECT * FROM item WHERE idItem = ?");
+			ResultSet resultadoDatoItem = null;
+			paquetePersonaje.eliminarItems();
+		
+			while (j <= 9) {
+				if(resultadoItemsID.getInt(i) != -1) {
+					stDatosItem.setInt(1, resultadoItemsID.getInt(i));
+					resultadoDatoItem = stDatosItem.executeQuery();
+					
+					paquetePersonaje.anadirItem(resultadoDatoItem.getInt("idItem"), resultadoDatoItem.getString("nombre"),
+							resultadoDatoItem.getInt("wereable"), resultadoDatoItem.getInt("bonusSalud"),
+							resultadoDatoItem.getInt("bonusEnergia"), resultadoDatoItem.getInt("bonusFuerza"),
+							resultadoDatoItem.getInt("bonusDestreza"), resultadoDatoItem.getInt("bonusInteligencia"),
+							resultadoDatoItem.getString("foto"), resultadoDatoItem.getString("fotoEquipado"));
 				}
-				PreparedStatement stActualizarMochila = connect.prepareStatement(
-						"UPDATE mochila SET item1=? ,item2=? ,item3=? ,item4=? ,item5=? ,item6=? ,item7=? ,item8=? ,item9=? "
-								+ ",item10=? ,item11=? ,item12=? ,item13=? ,item14=? ,item15=? ,item16=? ,item17=? ,item18=? ,item19=? ,item20=? WHERE idMochila=?");
-				while (i < paquetePersonaje.getCantItems()) {
-					stActualizarMochila.setInt(i + 1, paquetePersonaje.getItemID(i));
-					i++;
-				}
-				for (int j = paquetePersonaje.getCantItems(); j < 20; j++) {
-					stActualizarMochila.setInt(j + 1, -1);
-				}
-				stActualizarMochila.setInt(21, paquetePersonaje.getId());
-				stActualizarMochila.executeUpdate();
+				i++;
+				j++;
 			}
 			Servidor.log.append("El personaje " + paquetePersonaje.getNombre() + " se ha actualizado con éxito."  + System.lineSeparator());;
 		} catch (SQLException e) {
@@ -361,9 +355,36 @@ public class Conector {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}		
 		
-		
-		
+	public void actualizarInventario(int idPersonaje) {
+		int i = 0;
+		PaquetePersonaje paquetePersonaje = Servidor.getPersonajesConectados().get(idPersonaje);
+		PreparedStatement stActualizarMochila;
+		try {
+			stActualizarMochila = connect.prepareStatement(
+					"UPDATE mochila SET item1=? ,item2=? ,item3=? ,item4=? ,item5=? ,item6=? ,item7=? ,item8=? ,item9=? "
+							+ ",item10=? ,item11=? ,item12=? ,item13=? ,item14=? ,item15=? ,item16=? ,item17=? ,item18=? ,item19=? ,item20=? WHERE idMochila=?");
+			while (i < paquetePersonaje.getCantItems()) {
+				stActualizarMochila.setInt(i + 1, paquetePersonaje.getItemID(i));
+				i++;
+			}
+			if( paquetePersonaje.getCantItems() < 9) {
+				int itemGanado = new Random().nextInt(29);
+				itemGanado += 1;
+				//paquetePersonaje.anadirItem(itemGanado);
+				stActualizarMochila.setInt(paquetePersonaje.getCantItems()+1, itemGanado);
+			} 
+			for (int j = paquetePersonaje.getCantItems()+2; j < 20; j++) {
+				stActualizarMochila.setInt(j, -1);
+			}
+			stActualizarMochila.setInt(21, paquetePersonaje.getId());
+			stActualizarMochila.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void actualizarPersonajeSubioNivel(PaquetePersonaje paquetePersonaje) {

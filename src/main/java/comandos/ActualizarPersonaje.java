@@ -16,8 +16,7 @@ public class ActualizarPersonaje extends ComandosServer {
 		
 		Servidor.getPersonajesConectados().remove(escuchaCliente.getPaquetePersonaje().getId());
 		Servidor.getPersonajesConectados().put(escuchaCliente.getPaquetePersonaje().getId(), escuchaCliente.getPaquetePersonaje());
-		escuchaCliente.getPaquetePersonaje().ponerBonus();
-		escuchaCliente.getPaquetePersonaje().sacarUltimoItem();
+
 		for(EscuchaCliente conectado : Servidor.getClientesConectados()) {
 			try {
 				conectado.getSalida().writeObject(gson.toJson(escuchaCliente.getPaquetePersonaje()));
