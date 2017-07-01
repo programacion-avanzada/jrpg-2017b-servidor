@@ -44,8 +44,8 @@ public class Servidor extends Thread {
 
 	public static JTextArea log;
 	
-	public static AtencionConexiones atencionConexiones = new AtencionConexiones();
-	public static AtencionMovimientos atencionMovimientos = new AtencionMovimientos();;
+	public static AtencionConexiones atencionConexiones;
+	public static AtencionMovimientos atencionMovimientos;
 
 	public static void main(String[] args) {
 		cargarInterfaz();	
@@ -92,12 +92,15 @@ public class Servidor extends Thread {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					server.stop();
+					atencionConexiones.stop();
+					atencionMovimientos.stop();
 					for (EscuchaCliente cliente : clientesConectados) {
 						cliente.getSalida().close();
 						cliente.getEntrada().close();
 						cliente.getSocket().close();
 					}
 					serverSocket.close();
+					log.append("El servidor se ha detenido." + System.lineSeparator());
 				} catch (IOException e1) {
 					log.append("Fallo al intentar detener el servidor." + System.lineSeparator());
 					e1.printStackTrace();
@@ -117,12 +120,15 @@ public class Servidor extends Thread {
 				if (serverSocket != null) {
 					try {
 						server.stop();
+						atencionConexiones.stop();
+						atencionMovimientos.stop();
 						for (EscuchaCliente cliente : clientesConectados) {
 							cliente.getSalida().close();
 							cliente.getEntrada().close();
 							cliente.getSocket().close();
 						}
 						serverSocket.close();
+						log.append("El servidor se ha detenido." + System.lineSeparator());
 					} catch (IOException e) {
 						log.append("Fallo al intentar detener el servidor." + System.lineSeparator());
 						e.printStackTrace();
@@ -148,6 +154,9 @@ public class Servidor extends Thread {
 			serverSocket = new ServerSocket(PUERTO);
 			log.append("Servidor esperando conexiones..." + System.lineSeparator());
 			String ipRemota;
+			
+			atencionConexiones = new AtencionConexiones();
+			atencionMovimientos = new AtencionMovimientos();
 			
 			atencionConexiones.start();
 			atencionMovimientos.start();
