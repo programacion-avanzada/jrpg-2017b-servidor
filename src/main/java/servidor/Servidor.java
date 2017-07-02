@@ -35,7 +35,7 @@ public class Servidor extends Thread {
 	
 	private static ServerSocket serverSocket;
 	private static Conector conexionDB;
-	private final int PUERTO = 9999;
+	private final int PUERTO = 55050;
 
 	private final static int ANCHO = 700;
 	private final static int ALTO = 640;
