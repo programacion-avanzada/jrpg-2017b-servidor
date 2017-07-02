@@ -164,7 +164,7 @@ public class Conector {
 	public boolean loguearUsuario(PaqueteUsuario user) {
 		ResultSet result = null;
 		try {
-			// Busco usuario y contrase�a
+			// Busco usuario y contraseña
 			PreparedStatement st = connect
 					.prepareStatement("SELECT * FROM registro WHERE usuario = ? AND password = ? ");
 			st.setString(1, user.getUsername());
@@ -207,7 +207,6 @@ public class Conector {
 			stActualizarPersonaje.setInt(8, paquetePersonaje.getId());
 			stActualizarPersonaje.executeUpdate();
 
-//			actualizarInventario(paquetePersonaje);
 			
 			PreparedStatement stDameItemsID = connect.prepareStatement("SELECT * FROM mochila WHERE idMochila = ?");
 			stDameItemsID.setInt(1, paquetePersonaje.getId());
@@ -353,7 +352,6 @@ public class Conector {
 			stActualizarMochila.executeUpdate();
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}		
@@ -373,7 +371,6 @@ public class Conector {
 			if( paquetePersonaje.getCantItems() < 9) {
 				int itemGanado = new Random().nextInt(29);
 				itemGanado += 1;
-				//paquetePersonaje.anadirItem(itemGanado);
 				stActualizarMochila.setInt(paquetePersonaje.getCantItems()+1, itemGanado);
 			} 
 			for (int j = paquetePersonaje.getCantItems()+2; j < 20; j++) {
