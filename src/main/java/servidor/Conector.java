@@ -372,9 +372,13 @@ public class Conector {
 				int itemGanado = new Random().nextInt(29);
 				itemGanado += 1;
 				stActualizarMochila.setInt(paquetePersonaje.getCantItems()+1, itemGanado);
-			} 
-			for (int j = paquetePersonaje.getCantItems()+2; j < 20; j++) {
-				stActualizarMochila.setInt(j, -1);
+				for (int j = paquetePersonaje.getCantItems()+2; j < 20; j++) {
+					stActualizarMochila.setInt(j, -1);
+				}
+			} else {
+				for (int j = paquetePersonaje.getCantItems()+1; j < 20; j++) {
+					stActualizarMochila.setInt(j, -1);
+				}
 			}
 			stActualizarMochila.setInt(21, paquetePersonaje.getId());
 			stActualizarMochila.executeUpdate();
