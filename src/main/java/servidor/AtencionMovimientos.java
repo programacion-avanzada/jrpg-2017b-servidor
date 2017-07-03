@@ -38,13 +38,12 @@ public class AtencionMovimientos extends Thread {
 						
 							PaqueteDeMovimientos pdp = (PaqueteDeMovimientos) new PaqueteDeMovimientos(Servidor.getUbicacionPersonajes()).clone();
 							pdp.setComando(Comando.MOVIMIENTO);
-							conectado.getSalida().writeObject(gson.toJson(pdp));	
-						
+							synchronized (conectado) {
+								conectado.getSalida().writeObject(gson.toJson(pdp));									
+							}
 						}
 					}
-					
 				}
-				
 			} catch (Exception e){
 				e.printStackTrace();
 			}
