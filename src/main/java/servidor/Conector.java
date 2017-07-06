@@ -297,7 +297,6 @@ public class Conector {
 		} catch (SQLException ex) {
 			Servidor.log.append("Fallo al intentar recuperar el personaje " + user.getUsername() + System.lineSeparator());
 			Servidor.log.append(ex.getMessage() + System.lineSeparator());
-			ex.printStackTrace();
 		}
 
 		return new PaquetePersonaje();

@@ -104,7 +104,6 @@ public class Servidor extends Thread {
 					log.append("El servidor se ha detenido." + System.lineSeparator());
 				} catch (IOException e1) {
 					log.append("Fallo al intentar detener el servidor." + System.lineSeparator());
-					e1.printStackTrace();
 				}
 				if(conexionDB != null)
 					conexionDB.close();
