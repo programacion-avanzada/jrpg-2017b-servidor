@@ -19,8 +19,7 @@ public class ActualizarComercio extends ComandosServer{
 				try {
 					conectado.getSalida().writeObject(gson.toJson(paqueteComerciar));
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Servidor.log.append("Falló al intentar enviar paqueteComerciar a:" + conectado.getPaquetePersonaje().getId() + "\n");
 				}	
 			}
 		}

@@ -1,13 +1,7 @@
 package servidor;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.google.gson.Gson;
 
-import cliente.Cliente;
 import estados.Estado;
 import mensajeria.Comando;
 import mensajeria.PaqueteDeMovimientos;
@@ -45,7 +39,7 @@ public class AtencionMovimientos extends Thread {
 					}
 				}
 			} catch (Exception e){
-				e.printStackTrace();
+				Servidor.log.append("Falló al intentar enviar paqueteDeMovimientos \n");
 			}
 		}
 	}

@@ -23,7 +23,7 @@ public class ActualizarTrueque extends ComandosServer {
 				conectado.getSalida().writeObject(gson.toJson(escuchaCliente.getPaquetePersonaje()));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Servidor.log.append("Falló al intentar enviar actualizacion de trueque a:" + conectado.getPaquetePersonaje().getId() + "\n");
 			}
 		}
 

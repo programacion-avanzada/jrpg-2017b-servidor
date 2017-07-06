@@ -16,8 +16,7 @@ public class Atacar extends ComandosServer {
 				try {
 					conectado.getSalida().writeObject(gson.toJson(escuchaCliente.getPaqueteAtacar()));
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Servidor.log.append("Falló al intentar enviar ataque a:" + conectado.getPaquetePersonaje().getId() + "\n");
 				}
 			}
 		}

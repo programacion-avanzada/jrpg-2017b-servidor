@@ -15,8 +15,8 @@ public class Salir extends ComandosServer {
 			escuchaCliente.getSalida().close();
 			escuchaCliente.getSocket().close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Servidor.log.append("Falló al intentar salir \n");
+
 		}
 		
 		

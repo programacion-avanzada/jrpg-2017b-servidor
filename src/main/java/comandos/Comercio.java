@@ -20,7 +20,7 @@ public class Comercio extends ComandosServer  {
 					conectado.getSalida().writeObject(gson.toJson(paqueteComerciar));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Servidor.log.append("Falló al intentar enviar comercio a:" + conectado.getPaquetePersonaje().getId() + "\n");
 				}	
 			}
 		}

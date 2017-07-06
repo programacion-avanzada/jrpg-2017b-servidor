@@ -132,7 +132,6 @@ public class Servidor extends Thread {
 						log.append("El servidor se ha detenido." + System.lineSeparator());
 					} catch (IOException e) {
 						log.append("Fallo al intentar detener el servidor." + System.lineSeparator());
-						e.printStackTrace();
 						System.exit(1);
 					}
 				}
@@ -176,7 +175,6 @@ public class Servidor extends Thread {
 			}
 		} catch (Exception e) {
 			log.append("Fallo la conexión." + System.lineSeparator());
-			e.printStackTrace();
 		}
 	}
 

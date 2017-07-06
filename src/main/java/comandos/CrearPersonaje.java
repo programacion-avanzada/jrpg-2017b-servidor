@@ -19,8 +19,7 @@ public class CrearPersonaje extends ComandosServer {
 		try {
 			escuchaCliente.getSalida().writeObject(gson.toJson(escuchaCliente.getPaquetePersonaje(), escuchaCliente.getPaquetePersonaje().getClass()));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Servidor.log.append("Falló al intentar enviar personaje creado \n");
 		}
 
 	}

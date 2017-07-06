@@ -37,8 +37,7 @@ public class Batalla extends ComandosServer {
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Servidor.log.append("Falló al intentar enviar Batalla \n");
 		}
 
 		synchronized (Servidor.atencionConexiones) {

@@ -1,8 +1,6 @@
 package comandos;
 
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 import java.util.Map;
 
 import mensajeria.Comando;
@@ -35,13 +33,12 @@ public class Talk extends ComandosServer {
 						try {
 							conectado.getSalida().writeObject(gson.toJson(paqueteMensaje));
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							Servidor.log.append("Falló al intentar enviar mensaje a:" + conectado.getPaquetePersonaje().getId() + "\n");
 						}
 					}
 				}			
 			} else {
-				System.out.println("Server: Mensaje No Enviado!");
+				Servidor.log.append("No se envió el mensaje \n");
 			}
 		} else {				
 			for (Map.Entry<Integer, PaquetePersonaje> personaje : Servidor.getPersonajesConectados().entrySet()) {
@@ -54,8 +51,7 @@ public class Talk extends ComandosServer {
 					try {
 						conectado.getSalida().writeObject(gson.toJson(paqueteMensaje));
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Servidor.log.append("Falló al intentar enviar mensaje a:" + conectado.getPaquetePersonaje().getId() + "\n");
 					}
 				}
 			}		
