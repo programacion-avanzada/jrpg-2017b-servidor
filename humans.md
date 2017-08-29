@@ -3,6 +3,17 @@
 Este proyecto es evolutivo, por lo que los integrantes van rotando a través de los cuatrimestres.
 Vamos a nombrarlos, para reconocer el esfuerzo de cada uno de los estudiantes que aportó algo para sacarlo adelante.
 
+## Segundo cuatrimestre 2017
+
+### Docentes del Taller
+
+* Julio Crispino ([jmcrispino](https://github.com/jmcrispino))
+* Lucas Videla ([delucas](https://github.com/delucas))
+
+### Estudiantes
+
+(pendiente hasta terminar el cuatrimestre)
+
 ## Primer cuatrimestre 2017
 
 ### Docentes del Taller
@@ -13,7 +24,94 @@ Vamos a nombrarlos, para reconocer el esfuerzo de cada uno de los estudiantes qu
 
 ### Estudiantes
 
-(a completar al finalizar el cuatrimestre)
+### Equipo seleccionado: "[LosCacheFC](https://github.com/LosCacheFC)"
+
+* Pablo Raimondo ([PabloRai](https://github.com/PabloRai))
+* Nicolás Sapaya ([NicolasSap](https://github.com/NicolasSap))
+
+### Cohorte
+
+#### [TheBitles](https://github.com/TheBitles)
+
+* Dimas Aguirre ([a-dimas](https://github.com/a-dimas))
+* Fabián Norberto Escobar ([FabianNorbertoEscobar](https://github.com/FabianNorbertoEscobar))
+* Maxi Perez Coto ([maxiperezc](https://github.com/maxiperezc))
+* Pablo Lopez ([pabloL0pez](https://github.com/pabloL0pez))
+
+#### [LosPecesDelInfierno](https://github.com/LosPecesDelInfierno)
+
+* Enrique Lamberto ([enquibe](https://github.com/enquibe))
+* Lautaro Aimar Bobadilla ([lautaroaimar](https://github.com/lautaroaimar))
+* Federico Marino Dragoset ([fedemarino37](https://github.com/fedemarino37))
+* Luciano Tonlorenzi ([ltonlorenzi](https://github.com/ltonlorenzi))
+* Mariano Gambacorta ([mgambacorta](https://github.com/mgambacorta))
+
+#### [BrujosDeJava](https://github.com/BrujosDeJava)
+
+* Carroccio Julian ([juliancarroccio](https://github.com/juliancarroccio))
+* Laurenzzo Ramiro ([RLaurenzzo](https://github.com/RLaurenzzo))
+* Contreras David ([davidrcontreras](https://github.com/davidrcontreras))
+* Silva Diego ([SilvaDiegoUnlam](https://github.com/SilvaDiegoUnlam))
+
+#### [CodigoAcme](https://github.com/CodigoAcme)
+
+* Flores, Cristian ([crisflores](https://github.com/crisflores))
+* Gutiérrez, Ruben ([rubennnn](https://github.com/rubennnn))
+* Montenegro, Fernando ([fdmontenegro](https://github.com/fdmontenegro))
+
+#### [LosYakuza](https://github.com/LosYakuza)
+
+* Micaela Ramirez ([mramirez96](https://github.com/mramirez96))
+* Leandro Ibaceta ([libaceta](https://github.com/libaceta))
+* Gabriel Vargas ([Einzamkeit](https://github.com/Einzamkeit))
+* Juan Arana ([aranajuan](https://github.com/aranajuan))
+
+#### [LosPoiosHermanos](https://github.com/LosPoiosHermanos)
+
+* Jorge Hernan Enciso Dure ([HernanEnciso](https://github.com/HernanEnciso))
+* Sabrina Tejada ([sntejada1](https://github.com/sntejada1))
+* Marcelo Gabriel Lorenz ([M-G-Lorenz](https://github.com/M-G-Lorenz))
+* Fernando Jardines ([fer-unlam](https://github.com/ferjardines))
+
+#### [BitsAndPixels](https://github.com/BitsAndPixels)
+
+* Martín Cortez ([mcortex](https://github.com/mcortex))
+* Diego Lo Giudice ([DLoGiudice](https://github.com/DLoGiudice))
+* Federico Manzano ([FedericoManzano](https://github.com/FedericoManzano))
+* David Regueira Vazquez ([DavidRegueiraVazquez](https://github.com/DavidRegueiraVazquez))
+
+#### [LosPollosHermanos17](https://github.com/LosPollosHermanos17)
+
+* Carlos Tomalino ([Charly87](https://github.com/Charly87))
+* Sergio Amoruso ([sergioamoruso91](https://github.com/sergioamoruso91))
+* Alejandro Brude ([abrude](https://github.com/abrude))
+* Rodrigo Cabral ([CabralRodrigoAriel](https://github.com/CabralRodrigoAriel))
+* Matias Lell ([MatiasLell](https://github.com/MatiasLell))
+* Maximiliano Meneghini ([MeneghiniDaniel](https://github.com/MeneghiniDaniel))
+
+#### [AntiTDD](https://github.com/AntiTDD)
+
+*([RamosMicaela](https://github.com/RamosMicaela))
+*([Secchi1](https://github.com/Secchi1))
+*([FacundoChervin](https://github.com/FacundoChervin))
+*([JavierHM-Audioslave](https://github.com/JavierHM-Audioslave))
+*([lucasivanmiller](https://github.com/lucasivanmiller))
+*([ThomiReynoso](https://github.com/ThomiReynoso))
+
+#### [PescaditoTeam](https://github.com/PescaditoTeam)
+
+* Ramos Maximiliano ([MaxiARG](https://github.com/MaxiARG))
+* Robles Martin ([mrleonel](https://github.com/mrleonel))
+* Galluzzo Luciano ([LuchoGalluzzo](https://github.com/LuchoGalluzzo))
+* Diego Andrada ([dandradagithub](https://github.com/dandradagithub))
+* Nahuel Coronel ([coronelnah](https://github.com/coronelnah))
+* Agustin Riva ([AgusRiva](https://github.com/AgusRiva))
+
+#### [MrMeeseeks17](https://github.com/MrMeeseeks17)
+
+* Espinola Hamm Carla Sabrina ([EspHammCarla](https://github.com/EspHammCarla))
+* Izaguirre Rodríguez Alan Joel ([AlanIza96](https://github.com/AlanIza96))
+* Rey Juan Cruz ([jjuancruzrey](https://github.com/Jjuancruzrey))
 
 ## Segundo cuatrimestre 2016
 
@@ -83,16 +181,16 @@ Vamos a nombrarlos, para reconocer el esfuerzo de cada uno de los estudiantes qu
 #### [PrograAvanzadaGrupo2](https://www.github.com/PrograAvanzadaGrupo2)
 
 * Francisco Armentano ([franciscoarmentano](https://github.com/franciscoarmentano))
-* Sebastián Maruzzi ([sebastianmaruzzi] (https://github.com/sebastianmaruzzi))
-* Damián Vinci ([damianvinci] (https://github.com/damianvinci))
-* Ezequiel Moreno([ezequielmoreno] (https://github.com/ezequielmoreno))
+* Sebastián Maruzzi ([sebastianmaruzzi](https://github.com/sebastianmaruzzi))
+* Damián Vinci ([damianvinci](https://github.com/damianvinci))
+* Ezequiel Moreno([ezequielmoreno](https://github.com/ezequielmoreno))
 
 #### [PrograAvanzadaPick60](https://www.github.com/PrograAvanzadaPick60)
 
-* Jonathan De Donato ([JonaDeDonato] (https://github.com/JonaDeDonato))
-* Pablo Rapetti ([pablorapetti] (https://github.com/pablorapetti))
-* Matias Angel Jimenez Vitale ([matiascirojimenez] (https://github.com/matiascirojimenez))
-* Daniel Calandra ([dcalandrachecco] (https://github.com/dcalandrachecco))
+* Jonathan De Donato ([JonaDeDonato](https://github.com/JonaDeDonato))
+* Pablo Rapetti ([pablorapetti](https://github.com/pablorapetti))
+* Matias Angel Jimenez Vitale ([matiascirojimenez](https://github.com/matiascirojimenez))
+* Daniel Calandra ([dcalandrachecco](https://github.com/dcalandrachecco))
 
 #### [Promotion-System](https://www.github.com/Promotion-System)
 

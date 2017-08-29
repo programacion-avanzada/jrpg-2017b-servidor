@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/LosIsotopos/jrpg-2017a-servidor.svg?branch=master)](https://travis-ci.org/LosIsotopos/jrpg-2017a-servidor)
+[![Build Status](https://travis-ci.org/XXX/jrpg-2017b-servidor.svg?branch=master)](https://travis-ci.org/XXX/jrpg-2017b-servidor)
 # World Of Middle Earth (WOME) - servidor
 
 ## Sobre las personas
@@ -7,16 +7,19 @@
 
 ### Docentes del Taller
 
-* Leonardo Blautzik ([leoblautzik](https://github.com/leoblautzik))
 * Julio Crispino ([jmcrispino](https://github.com/jmcrispino))
 * Lucas Videla ([delucas](https://github.com/delucas))
 
 ### Integrantes del equipo
 
-* Ezequiel Laurenti ([ezelau95](https://github.com/ezelau95))
-* Fernando Queirolo ([fernandoq96](https://github.com/fernandoq96))
-* Pablo Raimondo ([PabloRai](https://github.com/PabloRai))
-* Nicolás Sapaya ([NicolasSap](https://github.com/NicolasSap))
+* Completar ([xxxx](https://github.com/xxxx))
+* Completar ([xxxx](https://github.com/xxxx))
+* Completar ([xxxx](https://github.com/xxxx))
+* Completar ([xxxx](https://github.com/xxxx))
+* Completar ([xxxx](https://github.com/xxxx))
+* Completar ([xxxx](https://github.com/xxxx))
+* Completar ([xxxx](https://github.com/xxxx))
+* Completar ([xxxx](https://github.com/xxxx))
 
 ## Sobre la tecnología
 * Java 1.8
@@ -30,7 +33,7 @@
 
 ## Cómo hacer andar el proyecto
 
-1. Desde el usuario de la organización que creen, deben hacer un fork del proyecto. Esto debe resultar en un nuevo repositorio en la ubicación `www.github.com/organizacion/jrpg-2017a-servidor`, por ejemplo.
+1. Desde el usuario de la organización que creen, deben hacer un fork del proyecto. Esto debe resultar en un nuevo repositorio en la ubicación `www.github.com/organizacion/jrpg-2017b-servidor`, por ejemplo.
 2. Cada uno de los integrantes de la organización debe clonar el repositorio en su computadora de trabajo, idealmente dentro del workspace de Eclipse.
 3. Una vez que lo han clonado, deben importarlo dentro de Eclipse con la opción Import > Existing Projects into Workspace.
 4. Cuando tengan el proyecto disponible, deben explorar las propiedades y cambiarle el encoding a UTF-8. Este paso es importe, ya que el encoding define cómo Eclipse interpreta los caracteres.
