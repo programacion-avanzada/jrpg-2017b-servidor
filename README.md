@@ -12,14 +12,14 @@
 
 ### Integrantes del equipo
 
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
+* Completar ([Ezequiel Corno](https://github.com/EzequielCorno))
+* Completar ([Leonel Ávalos](https://github.com/leoavalos95))
+* Completar ([Federico Schafer](https://github.com/federicoSchafer))
+* Completar ([Ezequiel Tejerina](https://github.com/EzequielTejerina))
+* Completar ([Pablo Joel López](https://github.com/pabloL0pez))
+* Completar ([Fabián Norberto Escobar](https://github.com/FabianNorbertoEscobar))
+* Completar ([Lucas Secchi](https://github.com/Secchi1))
+* Completar ([Micaela Ramos](https://github.com/RamosMicaela))
 
 ## Sobre la tecnología
 * Java 1.8
