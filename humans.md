@@ -24,7 +24,7 @@ Vamos a nombrarlos, para reconocer el esfuerzo de cada uno de los estudiantes qu
 
 ### Estudiantes
 
-### Equipo seleccionado: "[LosCacheFC](https://github.com/LosCacheFC)"
+### Equipo seleccionado: "[LosIsotopos](https://github.com/LosIsotopos)"
 
 * Pablo Raimondo ([PabloRai](https://github.com/PabloRai))
 * Nicolás Sapaya ([NicolasSap](https://github.com/NicolasSap))
