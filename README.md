@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/XXX/jrpg-2017b-servidor.svg?branch=master)](https://travis-ci.org/XXX/jrpg-2017b-servidor)
+[![Build Status](https://travis-ci.org/JavaDabaDuu/jrpg-2017b-servidor.svg?branch=master)](https://travis-ci.org/JavaDabaDuu/jrpg-2017b-servidor)
 # World Of Middle Earth (WOME) - servidor
 
 ## Sobre las personas
@@ -12,14 +12,14 @@
 
 ### Integrantes del equipo
 
-* Completar ([Ezequiel Corno](https://github.com/EzequielCorno))
-* Completar ([Leonel Ávalos](https://github.com/leoavalos95))
-* Completar ([Federico Schafer](https://github.com/federicoSchafer))
-* Completar ([Ezequiel Tejerina](https://github.com/EzequielTejerina))
-* Completar ([Pablo Joel López](https://github.com/pabloL0pez))
-* Completar ([Fabián Norberto Escobar](https://github.com/FabianNorbertoEscobar))
-* Completar ([Lucas Secchi](https://github.com/Secchi1))
-* Completar ([Micaela Ramos](https://github.com/RamosMicaela))
+* Ezequiel Corno ([EzequielCorno](https://github.com/EzequielCorno))<br>
+* Leonel Ávalos ([leoavalos95](https://github.com/leoavalos95))<br>
+* Federico Schafer ([federicoSchafer](https://github.com/federicoSchafer))<br>
+* Ezequiel Tejerina ([EzequielTejerina](https://github.com/EzequielTejerina))<br>
+* Pablo López ([pabloL0pez](https://github.com/pabloL0pez))<br>
+* Fabián Escobar ([FabianNorbertoEscobar](https://github.com/FabianNorbertoEscobar))<br>
+* Lucas Secchi ([Secchi1](https://github.com/Secchi1))<br>
+* Micaela Ramos ([RamosMicaela](https://github.com/RamosMicaela))
 
 ## Sobre la tecnología
 * Java 1.8
