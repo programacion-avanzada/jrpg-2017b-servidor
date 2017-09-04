@@ -24,7 +24,7 @@ Vamos a nombrarlos, para reconocer el esfuerzo de cada uno de los estudiantes qu
 
 ### Estudiantes
 
-### Equipo seleccionado: "[LosIsotopos](https://github.com/LosIsotopos)"
+### Equipo seleccionado: "[Los Isotopos](https://github.com/LosIsotopos)"
 
 * Pablo Raimondo ([PabloRai](https://github.com/PabloRai))
 * Nicolás Sapaya ([NicolasSap](https://github.com/NicolasSap))
