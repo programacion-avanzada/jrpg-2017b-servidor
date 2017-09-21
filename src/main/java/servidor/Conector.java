@@ -384,7 +384,7 @@ public class Conector {
 	public void actualizarPersonajeSubioNivel(PaquetePersonaje paquetePersonaje) {
 		try {
 			PreparedStatement stActualizarPersonaje = connect
-					.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=? "
+					.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=?, puntosNivel=? "
 							+ "  WHERE idPersonaje=?");
 			
 			stActualizarPersonaje.setInt(1, paquetePersonaje.getFuerza());
@@ -395,6 +395,7 @@ public class Conector {
 			stActualizarPersonaje.setInt(6, paquetePersonaje.getExperiencia());
 			stActualizarPersonaje.setInt(7, paquetePersonaje.getNivel());
 			stActualizarPersonaje.setInt(8, paquetePersonaje.getId());
+			stActualizarPersonaje.setInt(9, paquetePersonaje.getPuntosNivel());
 			
 			stActualizarPersonaje.executeUpdate();
 			
