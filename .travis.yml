@@ -5,7 +5,9 @@ jdk:
   
   - oraclejdk7  - openjdk7
 
-  
+ 
+dist: trusty 
+sudo: required
 
 before_install:
  - "export DISPLAY=:99.0"
