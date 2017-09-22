@@ -1,13 +1,9 @@
 language: java
-
-jdk:
-
-  
-  - oraclejdk7  - openjdk7
-
- 
-dist: trusty 
+dist: trusty
 sudo: required
+jdk:
+ - oraclejdk8  
+ - openjdk7
 
 before_install:
  - "export DISPLAY=:99.0"
