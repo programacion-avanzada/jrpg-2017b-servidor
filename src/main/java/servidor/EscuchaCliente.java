@@ -26,7 +26,7 @@ public class EscuchaCliente extends Thread {
 	private final ObjectOutputStream salida;
 	private int idPersonaje;
 	private final Gson gson = new Gson();
-	
+
 	private PaquetePersonaje paquetePersonaje;
 	private PaqueteMovimiento paqueteMovimiento;
 	private PaqueteBatalla paqueteBatalla;
@@ -51,9 +51,8 @@ public class EscuchaCliente extends Thread {
 			paqueteUsuario = new PaqueteUsuario();
 
 			String cadenaLeida = (String) entrada.readObject();
-		
-			while (!((paquete = gson.fromJson(cadenaLeida, Paquete.class)).getComando() == Comando.DESCONECTAR)){
-								
+
+			while (!((paquete = gson.fromJson(cadenaLeida, Paquete.class)).getComando() == Comando.DESCONECTAR)) {
 
 				comand = (ComandosServer) paquete.getObjeto(Comando.NOMBREPAQUETE);
 				comand.setCadena(cadenaLeida);
@@ -80,25 +79,25 @@ public class EscuchaCliente extends Thread {
 
 		} catch (IOException | ClassNotFoundException e) {
 			Servidor.log.append("Error de conexion: " + e.getMessage() + System.lineSeparator());
-		} 
+		}
 	}
-	
+
 	public Socket getSocket() {
 		return socket;
 	}
-	
+
 	public ObjectInputStream getEntrada() {
 		return entrada;
 	}
-	
+
 	public ObjectOutputStream getSalida() {
 		return salida;
 	}
-	
-	public PaquetePersonaje getPaquetePersonaje(){
+
+	public PaquetePersonaje getPaquetePersonaje() {
 		return paquetePersonaje;
 	}
-	
+
 	public int getIdPersonaje() {
 		return idPersonaje;
 	}
@@ -167,4 +166,3 @@ public class EscuchaCliente extends Thread {
 		this.paqueteUsuario = paqueteUsuario;
 	}
 }
-

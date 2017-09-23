@@ -13,7 +13,7 @@ public class Registro extends ComandosServer {
 	public void ejecutar() {
 		Paquete paqueteSv = new Paquete(null, 0);
 		paqueteSv.setComando(Comando.REGISTRO);
-		
+
 		escuchaCliente.setPaqueteUsuario((PaqueteUsuario) (gson.fromJson(cadenaLeida, PaqueteUsuario.class)).clone());
 
 		// Si el usuario se pudo registrar le envio un msj de exito

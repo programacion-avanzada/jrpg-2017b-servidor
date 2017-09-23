@@ -14,15 +14,12 @@ public class Batalla extends ComandosServer {
 		// Le reenvio al id del personaje batallado que quieren pelear
 		escuchaCliente.setPaqueteBatalla((PaqueteBatalla) gson.fromJson(cadenaLeida, PaqueteBatalla.class));
 
-		Servidor.log.append(escuchaCliente.getPaqueteBatalla().getId() + " quiere batallar con "
-				+ escuchaCliente.getPaqueteBatalla().getIdEnemigo() + System.lineSeparator());
+		Servidor.log.append(escuchaCliente.getPaqueteBatalla().getId() + " quiere batallar con " + escuchaCliente.getPaqueteBatalla().getIdEnemigo() + System.lineSeparator());
 		try {
 
 			// seteo estado de batalla
-			Servidor.getPersonajesConectados().get(escuchaCliente.getPaqueteBatalla().getId())
-					.setEstado(Estado.estadoBatalla);
-			Servidor.getPersonajesConectados().get(escuchaCliente.getPaqueteBatalla().getIdEnemigo())
-					.setEstado(Estado.estadoBatalla);
+			Servidor.getPersonajesConectados().get(escuchaCliente.getPaqueteBatalla().getId()).setEstado(Estado.estadoBatalla);
+			Servidor.getPersonajesConectados().get(escuchaCliente.getPaqueteBatalla().getIdEnemigo()).setEstado(Estado.estadoBatalla);
 			escuchaCliente.getPaqueteBatalla().setMiTurno(true);
 			escuchaCliente.getSalida().writeObject(gson.toJson(escuchaCliente.getPaqueteBatalla()));
 

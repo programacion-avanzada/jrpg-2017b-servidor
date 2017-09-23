@@ -3,8 +3,6 @@ package testsServidor;
 import java.io.IOException;
 import java.util.Random;
 
-import javax.swing.plaf.SliderUI;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,19 +12,20 @@ import servidor.Conector;
 import servidor.Servidor;
 
 public class TestConector {
-	
-	private String getRandomString() {
-        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        StringBuilder salt = new StringBuilder();
-        Random rnd = new Random();
-        while (salt.length() < 8) { // length of the random string.
-            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-            salt.append(SALTCHARS.charAt(index));
-        }
-        String saltStr = salt.toString();
-        return saltStr;
 
-    }
+	private String getRandomString() {
+		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		StringBuilder salt = new StringBuilder();
+		Random rnd = new Random();
+		while (salt.length() < 8) { // length of the random string.
+			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+			salt.append(SALTCHARS.charAt(index));
+		}
+		String saltStr = salt.toString();
+		return saltStr;
+
+	}
+
 	@Test
 	public void testConexionConLaDB() {
 		new Servidor();
@@ -89,7 +88,7 @@ public class TestConector {
 
 		conector.registrarUsuario(pu);
 		conector.registrarPersonaje(pp, pu);
-		
+
 		pp = conector.getPersonaje(pu);
 
 		Assert.assertEquals(randomero, pp.getNombre());

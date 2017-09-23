@@ -14,11 +14,12 @@ public class InicioSesion extends ComandosServer {
 	public void ejecutar() {
 		Paquete paqueteSv = new Paquete(null, 0);
 		paqueteSv.setComando(Comando.INICIOSESION);
-		
+
 		// Recibo el paquete usuario
 		escuchaCliente.setPaqueteUsuario((PaqueteUsuario) (gson.fromJson(cadenaLeida, PaqueteUsuario.class)));
-		
-		// Si se puede loguear el usuario le envio un mensaje de exito y el paquete personaje con los datos
+
+		// Si se puede loguear el usuario le envio un mensaje de exito y el
+		// paquete personaje con los datos
 		try {
 			if (Servidor.getConector().loguearUsuario(escuchaCliente.getPaqueteUsuario())) {
 

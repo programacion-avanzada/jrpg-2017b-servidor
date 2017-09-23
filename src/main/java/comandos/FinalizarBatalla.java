@@ -11,14 +11,14 @@ public class FinalizarBatalla extends ComandosServer {
 
 	@Override
 	public void ejecutar() {
-		
+
 		PaqueteFinalizarBatalla paqueteFinalizarBatalla = (PaqueteFinalizarBatalla) gson.fromJson(cadenaLeida, PaqueteFinalizarBatalla.class);
 		escuchaCliente.setPaqueteFinalizarBatalla(paqueteFinalizarBatalla);
 		Servidor.getConector().actualizarInventario(paqueteFinalizarBatalla.getGanadorBatalla());
 		Servidor.getPersonajesConectados().get(escuchaCliente.getPaqueteFinalizarBatalla().getId()).setEstado(Estado.estadoJuego);
 		Servidor.getPersonajesConectados().get(escuchaCliente.getPaqueteFinalizarBatalla().getIdEnemigo()).setEstado(Estado.estadoJuego);
-		for(EscuchaCliente conectado : Servidor.getClientesConectados()) {
-			if(conectado.getIdPersonaje() == escuchaCliente.getPaqueteFinalizarBatalla().getIdEnemigo()) {
+		for (EscuchaCliente conectado : Servidor.getClientesConectados()) {
+			if (conectado.getIdPersonaje() == escuchaCliente.getPaqueteFinalizarBatalla().getIdEnemigo()) {
 				try {
 					conectado.getSalida().writeObject(gson.toJson(escuchaCliente.getPaqueteFinalizarBatalla()));
 				} catch (IOException e) {
@@ -27,8 +27,8 @@ public class FinalizarBatalla extends ComandosServer {
 				}
 			}
 		}
-		
-		synchronized(Servidor.atencionConexiones){
+
+		synchronized (Servidor.atencionConexiones) {
 			Servidor.atencionConexiones.notify();
 		}
 
