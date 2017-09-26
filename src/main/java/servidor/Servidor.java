@@ -50,6 +50,7 @@ public class Servidor extends Thread {
 
 	public static void main(String[] args) {
 		cargarInterfaz();
+		ModuloNPC.ejecutar();
 	}
 
 	private static void cargarInterfaz() {
