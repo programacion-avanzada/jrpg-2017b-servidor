@@ -191,7 +191,7 @@ public class Conector {
 			int i = 2;
 			int j = 1;
 			PreparedStatement stActualizarPersonaje = connect
-					.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=? "
+					.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=?, puntosNivel=?  "
 							+ "  WHERE idPersonaje=?");
 			
 			stActualizarPersonaje.setInt(1, paquetePersonaje.getFuerza());
@@ -201,7 +201,8 @@ public class Conector {
 			stActualizarPersonaje.setInt(5, paquetePersonaje.getEnergiaTope());
 			stActualizarPersonaje.setInt(6, paquetePersonaje.getExperiencia());
 			stActualizarPersonaje.setInt(7, paquetePersonaje.getNivel());
-			stActualizarPersonaje.setInt(8, paquetePersonaje.getId());
+			stActualizarPersonaje.setInt(8, paquetePersonaje.getPuntosNivel());//Se agrega puntos por nivel a actualizar
+			stActualizarPersonaje.setInt(9, paquetePersonaje.getId());
 			stActualizarPersonaje.executeUpdate();
 
 			
@@ -275,6 +276,7 @@ public class Conector {
 			personaje.setNombre(result.getString("nombre"));
 			personaje.setExperiencia(result.getInt("experiencia"));
 			personaje.setNivel(result.getInt("nivel"));
+			personaje.setPuntosNivel(result.getInt("puntosNivel"));
 
 			while (j <= 9) {
 				if(resultadoItemsID.getInt(i) != -1) {
@@ -394,8 +396,8 @@ public class Conector {
 			stActualizarPersonaje.setInt(5, paquetePersonaje.getEnergiaTope());
 			stActualizarPersonaje.setInt(6, paquetePersonaje.getExperiencia());
 			stActualizarPersonaje.setInt(7, paquetePersonaje.getNivel());
-			stActualizarPersonaje.setInt(8, paquetePersonaje.getId());
-			stActualizarPersonaje.setInt(9, paquetePersonaje.getPuntosNivel());
+			stActualizarPersonaje.setInt(8, paquetePersonaje.getPuntosNivel());
+			stActualizarPersonaje.setInt(9, paquetePersonaje.getId());
 			
 			stActualizarPersonaje.executeUpdate();
 			
