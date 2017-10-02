@@ -22,10 +22,10 @@ public class AtencionMovimientos extends Thread {
 
 				while (true) {
 
-					// Espero a que se conecte alguien
+					// Espero a que se mueva alguien
 					wait();
 
-					// Le reenvio la conexion a todos
+					// Le reenvio el movimiento a todos
 					for (EscuchaCliente conectado : Servidor.getClientesConectados()) {
 
 						if (conectado.getPaquetePersonaje().getEstado() == Estado.estadoJuego) {

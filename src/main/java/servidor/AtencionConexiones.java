@@ -17,6 +17,7 @@ public class AtencionConexiones extends Thread {
 	public void run() {
 
 		synchronized (this) {
+
 			try {
 
 				while (true) {

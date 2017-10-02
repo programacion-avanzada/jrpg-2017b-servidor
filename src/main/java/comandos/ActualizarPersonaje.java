@@ -12,8 +12,12 @@ public class ActualizarPersonaje extends ComandosServer {
 	public void ejecutar() {
 		escuchaCliente.setPaquetePersonaje((PaquetePersonaje) gson.fromJson(cadenaLeida, PaquetePersonaje.class));
 
-		Servidor.getConector().actualizarPersonaje(escuchaCliente.getPaquetePersonaje());
+		if (escuchaCliente.getPaquetePersonaje().getId() < 0) {
+			Servidor.log.append("El NPC " + escuchaCliente.getPaquetePersonaje().getId() + " ha evitado la actualización con éxito." + System.lineSeparator());
+			return;
+		}
 
+		Servidor.getConector().actualizarPersonaje(escuchaCliente.getPaquetePersonaje());
 		Servidor.getPersonajesConectados().remove(escuchaCliente.getPaquetePersonaje().getId());
 		Servidor.getPersonajesConectados().put(escuchaCliente.getPaquetePersonaje().getId(), escuchaCliente.getPaquetePersonaje());
 
