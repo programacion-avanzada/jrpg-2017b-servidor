@@ -24,7 +24,6 @@ public class AtencionMovimientos extends Thread {
 			
 					// Espero a que se conecte alguien
 					wait();
-					
 					// Le reenvio la conexion a todos
 					for (EscuchaCliente conectado : Servidor.getClientesConectados()) {
 					

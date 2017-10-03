@@ -23,14 +23,17 @@ import javax.swing.JTextArea;
 
 import mensajeria.PaqueteMensaje;
 import mensajeria.PaqueteMovimiento;
+import mensajeria.PaqueteNPC;
 import mensajeria.PaquetePersonaje;
 
 public class Servidor extends Thread {
 
 	private static ArrayList<EscuchaCliente> clientesConectados = new ArrayList<>();
+	private static ArrayList<EscuchaNPC> npcsActivos = new ArrayList<>();
 	
 	private static Map<Integer, PaqueteMovimiento> ubicacionPersonajes = new HashMap<>();
 	private static Map<Integer, PaquetePersonaje> personajesConectados = new HashMap<>();
+	private static Map<String, PaqueteNPC> ubicacionNPC = new HashMap<>();
 
 	private static Thread server;
 	
@@ -229,5 +232,13 @@ public class Servidor extends Thread {
 
 	public static Conector getConector() {
 		return conexionDB;
+	}
+	
+	public static ArrayList<EscuchaNPC> getNCPSActivos() {
+		return npcsActivos;
+	}
+	
+	public static Map<String, PaqueteNPC> getUbicacionNPC() {
+		return ubicacionNPC;
 	}
 }
