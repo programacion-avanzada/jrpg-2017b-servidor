@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/XXX/jrpg-2017b-servidor.svg?branch=master)](https://travis-ci.org/XXX/jrpg-2017b-servidor)
+﻿[![Build Status](https://travis-ci.org/XXX/jrpg-2017b-servidor.svg?branch=master)](https://travis-ci.org/XXX/jrpg-2017b-servidor)
 # World Of Middle Earth (WOME) - servidor
 
 ## Sobre las personas
@@ -12,7 +12,7 @@
 
 ### Integrantes del equipo
 
-* Completar ([xxxx](https://github.com/xxxx))
+* Facundo Garcia Pena([FGPena](https://github.com/FGPena))
 * Completar ([xxxx](https://github.com/xxxx))
 * Completar ([xxxx](https://github.com/xxxx))
 * Completar ([xxxx](https://github.com/xxxx))
