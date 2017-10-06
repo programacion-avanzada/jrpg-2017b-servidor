@@ -21,17 +21,20 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import mensajeria.PaqueteDeNpcs;
 import mensajeria.PaqueteMensaje;
 import mensajeria.PaqueteMovimiento;
+import mensajeria.PaqueteNpc;
 import mensajeria.PaquetePersonaje;
 
-public class Servidor extends Thread {
-
+public class Servidor extends Thread 
+{
 	private static ArrayList<EscuchaCliente> clientesConectados = new ArrayList<>();
 	
 	private static Map<Integer, PaqueteMovimiento> ubicacionPersonajes = new HashMap<>();
 	private static Map<Integer, PaquetePersonaje> personajesConectados = new HashMap<>();
-
+	private static PaqueteDeNpcs paqueteDeNpcs = new PaqueteDeNpcs();
+	
 	private static Thread server;
 	
 	private static ServerSocket serverSocket;
@@ -225,6 +228,16 @@ public class Servidor extends Thread {
 	
 	public static Map<Integer, PaquetePersonaje> getPersonajesConectados() {
 		return personajesConectados;
+	}
+
+	public static PaqueteDeNpcs getPaqueteDeNpcs()
+	{
+		return paqueteDeNpcs;
+	}
+
+	public static void setPaqueteDeNpcs(PaqueteDeNpcs paqueteDeNpcs)
+	{
+		Servidor.paqueteDeNpcs = paqueteDeNpcs;
 	}
 
 	public static Conector getConector() {
