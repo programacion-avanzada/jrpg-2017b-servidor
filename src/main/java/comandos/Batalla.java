@@ -30,6 +30,7 @@ public class Batalla extends ComandosServer {
 						escuchaCliente.getPaqueteBatalla().setIdEnemigo(aux);
 						escuchaCliente.getPaqueteBatalla().setMiTurno(false);
 						conectado.getSalida().writeObject(gson.toJson(escuchaCliente.getPaqueteBatalla())); // Se le envía el PaqueteBatalla al cliente del que fue retado.
+						break; // Sale del ciclo for each
 					}
 				}
 			} else { // Si tiene ID negativo, el enemigo es un NPC.
