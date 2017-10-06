@@ -234,7 +234,7 @@ public class ModuloNPC {
 		Personaje enemigo = crearPersonajes(paqueteNPC, paqueteEnemigo)[1];
 
 		while (npc.getPb() != null) { // Mientras dure la batalla
-
+			Servidor.log.append(null);
 			if (npc.getPb().isMiTurno()) { // Si es mi turno
 				// Calcular daño recibido
 				int daño = personaje.getSalud() - npc.getPa().getNuevaSaludEnemigo();
