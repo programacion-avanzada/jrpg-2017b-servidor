@@ -140,7 +140,7 @@ public class NPC {
 			int j = ModuloNPC.coordenadasABaldosas(x, y)[0];
 			int i = ModuloNPC.coordenadasABaldosas(x, y)[1];
 
-			// Se mueve a la otra mitad del mapa.
+			// Se mueve una baldosa.
 			if (j < Tile.ALTO / 2) {
 				j += 1;
 			} else {
