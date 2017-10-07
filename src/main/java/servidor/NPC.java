@@ -122,6 +122,8 @@ public class NPC {
 				j = 17;
 				i = 1;
 			} else {
+				j = 1;
+				i = 10;
 			}
 
 			Servidor.log.append("NPC " + this.id + " ha revivido en las coordenadas (" + j + ", " + i + ") del mapa " + this.pp.getMapa() + "." + System.lineSeparator());
