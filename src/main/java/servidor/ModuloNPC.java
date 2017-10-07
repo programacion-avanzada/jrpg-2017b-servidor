@@ -42,7 +42,7 @@ public class ModuloNPC {
 				enviarPaquetesNPCs(); // Envía los movimientos de los NPCs a los clientes.
 			}
 		};
-		ScheduledExecutorService executor1 = Executors.newScheduledThreadPool(2);
+		ScheduledExecutorService executor1 = Executors.newScheduledThreadPool(1);
 		executor1.scheduleAtFixedRate(epNPC, 0, 500, TimeUnit.MILLISECONDS); // El código de epNPC se ejecuta cada 0.5 segundos.
 
 		Runnable mNPC = new Runnable() {
@@ -50,7 +50,7 @@ public class ModuloNPC {
 				manejarNPCs(); // Le da directivas a los NPC.
 			}
 		};
-		ScheduledExecutorService executor2 = Executors.newScheduledThreadPool(2);
+		ScheduledExecutorService executor2 = Executors.newScheduledThreadPool(1);
 		executor2.scheduleAtFixedRate(mNPC, 0, 500, TimeUnit.MILLISECONDS); // El código de mNPC se ejecuta cada 0.5 segundos.
 	}
 

@@ -76,7 +76,7 @@ public class NPC {
 		}
 
 		if (pfb.getGanadorBatalla() == this.getPp().getId()) {
-			this.finalizarBatalla();
+			this.ganarBatalla();
 			return;
 		}
 
@@ -89,7 +89,7 @@ public class NPC {
 		this.setPa(null);
 	}
 
-	public void finalizarBatalla() {
+	public void ganarBatalla() {
 		FinalizarBatalla fb = new FinalizarBatalla();
 		fb.ejecutarDesdeNPC(this.pfb);
 
@@ -100,14 +100,36 @@ public class NPC {
 
 	public void morir() {
 
-		if (this.persistencia == 0) // Desaparece.
-		{
+		if (this.persistencia == 0) { // Desaparece.
 			Servidor.getPersonajesConectados().remove(this.getId());
 			Servidor.getUbicacionPersonajes().remove(this.getId());
 			Servidor.getNPCsCargados().remove(this.getId());
 		}
-		if (this.persistencia == 1) // "Revive" en otro lugar.
-		{
+		if (this.persistencia == 1) { // "Revive" cerca.
+			this.setPa(null);
+			this.setPb(null);
+			this.setPfb(null);
+
+			float x = this.pm.getPosX();
+			float y = this.pm.getPosY();
+			int j = ModuloNPC.coordenadasABaldosas(x, y)[0];
+			int i = ModuloNPC.coordenadasABaldosas(x, y)[1];
+
+			// Se mueve en diagonal.
+			if (j < 10) {
+				j = 17;
+				i = 1;
+			} else {
+				j = 1;
+				i = 10;
+			}
+
+			Servidor.log.append("NPC " + this.id + " ha revivido en las coordenadas (" + j + ", " + i + ") del mapa " + this.pp.getMapa() + "." + System.lineSeparator());
+			pm.setPosX(ModuloNPC.baldosasACoordenadas(j, i)[0]);
+			pm.setPosY(ModuloNPC.baldosasACoordenadas(j, i)[1]);
+			Servidor.getNPCsCargados().get(this.id).getPp().setEstado(1);
+		}
+		if (this.persistencia == 2) { // "Revive" lejos.
 			this.setPa(null);
 			this.setPb(null);
 			this.setPfb(null);
@@ -122,29 +144,6 @@ public class NPC {
 				j += Tile.ALTO / 2;
 			} else {
 				j -= Tile.ALTO / 2;
-			}
-
-			Servidor.log.append("NPC " + this.id + " ha revivido en las coordenadas (" + j + ", " + i + ") del mapa " + this.pp.getMapa() + "." + System.lineSeparator());
-			pm.setPosX(ModuloNPC.baldosasACoordenadas(j, i)[0]);
-			pm.setPosY(ModuloNPC.baldosasACoordenadas(j, i)[1]);
-			Servidor.getNPCsCargados().get(this.id).getPp().setEstado(1);
-		}
-		if (this.persistencia == 2) // "Revive" en el mismo lugar.
-		{
-			this.setPa(null);
-			this.setPb(null);
-			this.setPfb(null);
-
-			float x = this.pm.getPosX();
-			float y = this.pm.getPosY();
-			int j = ModuloNPC.coordenadasABaldosas(x, y)[0];
-			int i = ModuloNPC.coordenadasABaldosas(x, y)[1];
-
-			// Se mueve una baldosa.
-			if (j < Tile.ALTO / 2) {
-				j += 1;
-			} else {
-				j -= 1;
 			}
 
 			Servidor.log.append("NPC " + this.id + " ha revivido en las coordenadas (" + j + ", " + i + ") del mapa " + this.pp.getMapa() + "." + System.lineSeparator());

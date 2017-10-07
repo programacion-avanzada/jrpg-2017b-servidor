@@ -1,12 +1,12 @@
 -2 // ID
 1 // Dificultad
 1 // Movimiento
-1 // Persistencia
+2 // Persistencia
 PaqueteMovimiento:
 25 // jMin
-28 // jMax
+27 // jMax
 3 // iMin
-8 // jMax
+5 // jMax
 5 // Direccion
 0 // Frame
 PaquetePersonaje:
