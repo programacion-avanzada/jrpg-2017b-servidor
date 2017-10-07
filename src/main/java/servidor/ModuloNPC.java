@@ -235,7 +235,7 @@ public class ModuloNPC {
 
 		while (npc.getPb() != null) { // Mientras dure la batalla
 			Servidor.log.append(null);
-			if (npc.getPb().isMiTurno()) { // Si es mi turno
+			if (npc.getPb() != null && npc.getPb().isMiTurno()) { // Si es mi turno
 				// Calcular daño recibido
 				int daño = personaje.getSalud() - npc.getPa().getNuevaSaludEnemigo();
 				personaje.reducirSalud(daño); // Actualiza salud del NPC.
