@@ -78,7 +78,7 @@ public class EscuchaCliente extends Thread {
 			Servidor.log.append(paquete.getIp() + " se ha desconectado." + System.lineSeparator());
 
 		} catch (IOException | ClassNotFoundException e) {
-			Servidor.log.append("Error de conexión en EscuchaCliente.run(): ''" + e.getMessage() + "''." + System.lineSeparator());
+			Servidor.log.append("Error de conexión al escuchar clientes: ''" + e.getMessage() + "''." + System.lineSeparator());
 		}
 	}
 

@@ -227,7 +227,6 @@ public class ModuloNPC {
 
 		while (npc.getPp().getEstado() == Estado.estadoBatalla && npc.getPb() != null) { // Mientras dure la batalla
 
-			Servidor.log.append(null);
 			try {
 				Thread.sleep(500); // Espera por 0.5 segundos mientras el enemigo elige el ataque
 			} catch (InterruptedException e) {
