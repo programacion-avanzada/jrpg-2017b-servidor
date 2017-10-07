@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/XXX/jrpg-2017b-servidor.svg?branch=master)](https://travis-ci.org/XXX/jrpg-2017b-servidor)
+[![Build Status](https://travis-ci.org/LosTestigosDeRenata/jrpg-2017b-servidor.svg?branch=master)](https://travis-ci.org/LosTestigosDeRenata/jrpg-2017b-servidor)
 # World Of Middle Earth (WOME) - servidor
 
 ## Sobre las personas
@@ -12,14 +12,14 @@
 
 ### Integrantes del equipo
 
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
+* Fernando Queirolo ([fernandoq96](https://github.com/fernandoq96))
+* Javier Monardo ([JavierHM-Audioslave](https://github.com/JavierHM-Audioslave))
+* Julian Omar Meza ([JulianOmar](https://github.com/JulianOmar))
+* Julian Sanchez ([julyy123](https://github.com/julyy123))
+* Mariano Nicolas Molina ([MarianoNicolasMolina](https://github.com/MarianoNicolasMolina))
+* Martin Romano ([serjkz](https://github.com/serjkz))
+* Silvio Salmin ([SilvioSalmin](https://github.com/SilvioSalmin))
+* Santiago Tamashiro ([Ta-ma](https://github.com/Ta-ma))
 
 ## Sobre la tecnología
 * Java 1.8

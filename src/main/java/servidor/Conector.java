@@ -407,21 +407,11 @@ public class Conector {
 			stActualizarPersonaje.setInt(8, paquetePersonaje.getPuntosSkill());
 			stActualizarPersonaje.setInt(9, paquetePersonaje.getId());
 			
-			System.out.println("SUBIR NIVEL CONECTOR");
-			System.out.println(paquetePersonaje.getFuerza());
-			System.out.println(paquetePersonaje.getDestreza());
-			System.out.println(paquetePersonaje.getInteligencia());
-			System.out.println(paquetePersonaje.getSaludTope());
-			System.out.println(paquetePersonaje.getEnergiaTope());
-			System.out.println(paquetePersonaje.getExperiencia());
-			System.out.println(paquetePersonaje.getNivel());
-			System.out.println(paquetePersonaje.getId());
-			System.out.println(paquetePersonaje.getPuntosSkill());
-			
 			
 			stActualizarPersonaje.executeUpdate();
 			stActualizarPersonaje.close();
-			Servidor.log.append("El personaje " + paquetePersonaje.getNombre() + " se ha actualizado con éxito. SUBIO DE NIVEL"  + System.lineSeparator());;
+			Servidor.log.append("El personaje " + paquetePersonaje.getNombre() + " se ha actualizado con éxito."  + System.lineSeparator());;
+
 		} catch (SQLException e) {
 			Servidor.log.append("Fallo al intentar actualizar el personaje " + paquetePersonaje.getNombre()  + System.lineSeparator());
 		}
