@@ -165,10 +165,15 @@ public class Conector {
 		ResultSet result = null;
 		try {
 			// Busco usuario y contraseña
+			/*
 			PreparedStatement st = connect
 					.prepareStatement("SELECT * FROM registro WHERE usuario = ? AND password = ? ");
 			st.setString(1, user.getUsername());
-			st.setString(2, user.getPassword());
+			st.setString(2, user.getPassword());*/
+			
+			PreparedStatement st = connect
+					.prepareStatement("SELECT * FROM registro WHERE usuario = ? ");
+			st.setString(1, user.getUsername());
 			result = st.executeQuery();
 
 			// Si existe inicio sesion
@@ -230,7 +235,7 @@ public class Conector {
 				i++;
 				j++;
 			}
-			Servidor.log.append("El personaje " + paquetePersonaje.getNombre() + " se ha actualizado con éxito."  + System.lineSeparator());;
+			Servidor.log.append("El personaje " + paquetePersonaje.getNombre() + " se ha actualizado con éxito.SE ACTUALIZO)?"  + System.lineSeparator());;
 		} catch (SQLException e) {
 			Servidor.log.append("Fallo al intentar actualizar el personaje " + paquetePersonaje.getNombre()  + System.lineSeparator());
 		}
@@ -406,6 +411,7 @@ public class Conector {
 			stActualizarPersonaje.executeUpdate();
 			stActualizarPersonaje.close();
 			Servidor.log.append("El personaje " + paquetePersonaje.getNombre() + " se ha actualizado con éxito."  + System.lineSeparator());;
+
 		} catch (SQLException e) {
 			Servidor.log.append("Fallo al intentar actualizar el personaje " + paquetePersonaje.getNombre()  + System.lineSeparator());
 		}

@@ -2,6 +2,8 @@ package comandos;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import mensajeria.PaquetePersonaje;
 import servidor.EscuchaCliente;
 import servidor.Servidor;
