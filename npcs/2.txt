@@ -1,0 +1,24 @@
+-2 // ID
+1 // Dificultad
+1 // Movimiento
+2 // Persistencia
+PaqueteMovimiento:
+25 // jMin
+27 // jMax
+3 // iMin
+5 // jMax
+5 // Direccion
+0 // Frame
+PaquetePersonaje:
+2 // Mapa
+1 // Estado
+Asesino
+Orco
+Troll
+50 // Salud
+25 // Energia
+25 // Fuerza
+10 // Destreza
+10 // Inteligencia
+5 // Nivel
+50 // Experiencia

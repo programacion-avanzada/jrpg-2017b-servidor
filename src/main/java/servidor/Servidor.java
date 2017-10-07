@@ -27,10 +27,11 @@ import mensajeria.PaquetePersonaje;
 
 public class Servidor extends Thread {
 
-	private static ArrayList<EscuchaCliente> clientesConectados = new ArrayList<>();
+	private static ArrayList<EscuchaCliente> clientesConectados = new ArrayList<>(); // Para personajes con cliente.
+	private static Map<Integer, NPC> NPCsCargados = new HashMap<>(); // Para NPCs. Complementa a clientesConectados ya que los NPCs no tienen cliente.
 
-	private static Map<Integer, PaqueteMovimiento> ubicacionPersonajes = new HashMap<>();
-	private static Map<Integer, PaquetePersonaje> personajesConectados = new HashMap<>();
+	private static Map<Integer, PaquetePersonaje> personajesConectados = new HashMap<>(); // Tiene personajes con cliente y NPCs.
+	private static Map<Integer, PaqueteMovimiento> ubicacionPersonajes = new HashMap<>(); // Tiene personajes con cliente y NPCs.
 
 	private static Thread server;
 
@@ -151,6 +152,8 @@ public class Servidor extends Thread {
 
 			log.append("Iniciando el servidor..." + System.lineSeparator());
 			serverSocket = new ServerSocket(PUERTO);
+			log.append("Creando NPCs..." + System.lineSeparator());
+			ModuloNPC.ejecutar();
 			log.append("Servidor esperando conexiones..." + System.lineSeparator());
 			String ipRemota;
 
@@ -230,4 +233,9 @@ public class Servidor extends Thread {
 	public static Conector getConector() {
 		return conexionDB;
 	}
+
+	public static Map<Integer, NPC> getNPCsCargados() {
+		return NPCsCargados;
+	}
+
 }

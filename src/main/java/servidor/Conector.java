@@ -68,9 +68,8 @@ public class Conector {
 	public boolean registrarPersonaje(PaquetePersonaje paquetePersonaje, PaqueteUsuario paqueteUsuario) {
 
 		try {
-
 			// Registro al personaje en la base de datos
-			PreparedStatement stRegistrarPersonaje = connect.prepareStatement("INSERT INTO personaje (idInventario, idMochila,casta,raza,fuerza,destreza,inteligencia,saludTope,energiaTope,nombre,experiencia,nivel,idAlianza) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+			PreparedStatement stRegistrarPersonaje = connect.prepareStatement("INSERT INTO personaje (idInventario,idMochila,casta,raza,fuerza,destreza,inteligencia,saludTope,energiaTope,nombre,experiencia,nivel,idAlianza,puntosNoAsignados,asignadoFuerza,asignadoDestreza,asignadoInteligencia) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			stRegistrarPersonaje.setInt(1, -1);
 			stRegistrarPersonaje.setInt(2, -1);
 			stRegistrarPersonaje.setString(3, paquetePersonaje.getCasta());
@@ -84,16 +83,20 @@ public class Conector {
 			stRegistrarPersonaje.setInt(11, 0);
 			stRegistrarPersonaje.setInt(12, 1);
 			stRegistrarPersonaje.setInt(13, -1);
+			stRegistrarPersonaje.setInt(14, 0); // Puntos a asignar
+			stRegistrarPersonaje.setInt(15, 0); // Puntos asignados a fuerza
+			stRegistrarPersonaje.setInt(16, 0); // Puntos asignados a destreza
+			stRegistrarPersonaje.setInt(17, 0); // Puntos asignados a inteligencia
 			stRegistrarPersonaje.execute();
 
 			// Recupero la última key generada
 			ResultSet rs = stRegistrarPersonaje.getGeneratedKeys();
 			if (rs != null && rs.next()) {
 
-				// Obtengo el id
+				// Obtengo el ID
 				int idPersonaje = rs.getInt(1);
 
-				// Le asigno el id al paquete personaje que voy a devolver
+				// Le asigno el ID al paquete personaje que voy a devolver
 				paquetePersonaje.setId(idPersonaje);
 
 				// Le asigno el personaje al usuario
@@ -103,7 +106,7 @@ public class Conector {
 				stAsignarPersonaje.setString(3, paqueteUsuario.getPassword());
 				stAsignarPersonaje.execute();
 
-				// Por ultimo registro el inventario y la mochila
+				// Por último, registro el inventario y la mochila
 				if (this.registrarInventarioMochila(idPersonaje)) {
 					Servidor.log.append("El usuario " + paqueteUsuario.getUsername() + " ha creado el personaje " + paquetePersonaje.getId() + System.lineSeparator());
 					return true;
@@ -118,18 +121,15 @@ public class Conector {
 			Servidor.log.append("Error al intentar crear el personaje " + paquetePersonaje.getNombre() + System.lineSeparator());
 			return false;
 		}
-
 	}
 
 	public boolean registrarInventarioMochila(int idInventarioMochila) {
 		try {
-			// Preparo la consulta para el registro el inventario en la base de
-			// datos
+			// Preparo la consulta para el registro el inventario en la base de datos
 			PreparedStatement stRegistrarInventario = connect.prepareStatement("INSERT INTO inventario(idInventario,manos1,manos2,pie,cabeza,pecho,accesorio) VALUES (?,-1,-1,-1,-1,-1,-1)");
 			stRegistrarInventario.setInt(1, idInventarioMochila);
 
-			// Preparo la consulta para el registro la mochila en la base de
-			// datos
+			// Preparo la consulta para el registro la mochila en la base de datos
 			PreparedStatement stRegistrarMochila = connect.prepareStatement("INSERT INTO mochila(idMochila,item1,item2,item3,item4,item5,item6,item7,item8,item9,item10,item11,item12,item13,item14,item15,item16,item17,item18,item19,item20) VALUES(?,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)");
 			stRegistrarMochila.setInt(1, idInventarioMochila);
 
@@ -162,13 +162,13 @@ public class Conector {
 			st.setString(2, user.getPassword());
 			result = st.executeQuery();
 
-			// Si existe inicio sesion
+			// Si existe, inicio sesion
 			if (result.next()) {
 				Servidor.log.append("El usuario " + user.getUsername() + " ha iniciado sesión." + System.lineSeparator());
 				return true;
 			}
 
-			// Si no existe informo y devuelvo false
+			// Si no existe, informo y devuelvo false
 			Servidor.log.append("El usuario " + user.getUsername() + " ha realizado un intento fallido de inicio de sesión." + System.lineSeparator());
 			return false;
 
@@ -180,10 +180,17 @@ public class Conector {
 	}
 
 	public void actualizarPersonaje(PaquetePersonaje paquetePersonaje) {
+
+		if (paquetePersonaje.getId() < 0) // Los NPCs no aparecen en la base de datos de personajes.
+		{
+			Servidor.log.append("El NPC " + paquetePersonaje.getId() + " ha escapado la actualización con éxito." + System.lineSeparator());
+			return;
+		}
+
 		try {
 			int i = 2;
 			int j = 1;
-			PreparedStatement stActualizarPersonaje = connect.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=? " + "  WHERE idPersonaje=?");
+			PreparedStatement stActualizarPersonaje = connect.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=?, puntosNoAsignados=?, asignadoFuerza=?, asignadoDestreza=?, asignadoInteligencia=?" + "WHERE idPersonaje=?");
 
 			stActualizarPersonaje.setInt(1, paquetePersonaje.getFuerza());
 			stActualizarPersonaje.setInt(2, paquetePersonaje.getDestreza());
@@ -192,7 +199,11 @@ public class Conector {
 			stActualizarPersonaje.setInt(5, paquetePersonaje.getEnergiaTope());
 			stActualizarPersonaje.setInt(6, paquetePersonaje.getExperiencia());
 			stActualizarPersonaje.setInt(7, paquetePersonaje.getNivel());
-			stActualizarPersonaje.setInt(8, paquetePersonaje.getId());
+			stActualizarPersonaje.setInt(8, paquetePersonaje.getPuntosNoAsignados()); // Puntos a asignar
+			stActualizarPersonaje.setInt(9, paquetePersonaje.getPuntosAsignadosFuerza()); // Puntos asignados a fuerza
+			stActualizarPersonaje.setInt(10, paquetePersonaje.getPuntosAsignadosDestreza()); // Puntos asignados a destreza
+			stActualizarPersonaje.setInt(11, paquetePersonaje.getPuntosAsignadosInteligencia()); // Puntos asignados a inteligencia
+			stActualizarPersonaje.setInt(12, paquetePersonaje.getId());
 			stActualizarPersonaje.executeUpdate();
 
 			PreparedStatement stDameItemsID = connect.prepareStatement("SELECT * FROM mochila WHERE idMochila = ?");
@@ -202,7 +213,7 @@ public class Conector {
 			ResultSet resultadoDatoItem = null;
 			paquetePersonaje.eliminarItems();
 
-			while (j <= 9) {
+			while (j <= 13) {
 				if (resultadoItemsID.getInt(i) != -1) {
 					stDatosItem.setInt(1, resultadoItemsID.getInt(i));
 					resultadoDatoItem = stDatosItem.executeQuery();
@@ -259,8 +270,12 @@ public class Conector {
 			personaje.setNombre(result.getString("nombre"));
 			personaje.setExperiencia(result.getInt("experiencia"));
 			personaje.setNivel(result.getInt("nivel"));
+			personaje.setPuntosNoAsignados(result.getInt("puntosNoAsignados"));
+			personaje.setPuntosAsignadosFuerza(result.getInt("asignadoFuerza"));
+			personaje.setPuntosAsignadosDestreza(result.getInt("asignadoDestreza"));
+			personaje.setPuntosAsignadosInteligencia(result.getInt("asignadoInteligencia"));
 
-			while (j <= 9) {
+			while (j <= 13) {
 				if (resultadoItemsID.getInt(i) != -1) {
 					stDatosItem.setInt(1, resultadoItemsID.getInt(i));
 					resultadoDatoItem = stDatosItem.executeQuery();
@@ -358,7 +373,7 @@ public class Conector {
 
 	public void actualizarPersonajeSubioNivel(PaquetePersonaje paquetePersonaje) {
 		try {
-			PreparedStatement stActualizarPersonaje = connect.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=? " + "  WHERE idPersonaje=?");
+			PreparedStatement stActualizarPersonaje = connect.prepareStatement("UPDATE personaje SET fuerza=?, destreza=?, inteligencia=?, saludTope=?, energiaTope=?, experiencia=?, nivel=?, puntosNoAsignados=?, asignadoFuerza=?, asignadoDestreza=?, asignadoInteligencia=?" + "WHERE idPersonaje=?");
 
 			stActualizarPersonaje.setInt(1, paquetePersonaje.getFuerza());
 			stActualizarPersonaje.setInt(2, paquetePersonaje.getDestreza());
@@ -367,8 +382,11 @@ public class Conector {
 			stActualizarPersonaje.setInt(5, paquetePersonaje.getEnergiaTope());
 			stActualizarPersonaje.setInt(6, paquetePersonaje.getExperiencia());
 			stActualizarPersonaje.setInt(7, paquetePersonaje.getNivel());
-			stActualizarPersonaje.setInt(8, paquetePersonaje.getId());
-
+			stActualizarPersonaje.setInt(8, paquetePersonaje.getPuntosNoAsignados()); // Puntos a asignar
+			stActualizarPersonaje.setInt(9, paquetePersonaje.getPuntosAsignadosFuerza()); // Puntos asignados a fuerza
+			stActualizarPersonaje.setInt(10, paquetePersonaje.getPuntosAsignadosDestreza()); // Puntos asignados a destreza
+			stActualizarPersonaje.setInt(11, paquetePersonaje.getPuntosAsignadosInteligencia()); // Puntos asignados a inteligencia
+			stActualizarPersonaje.setInt(12, paquetePersonaje.getId());
 			stActualizarPersonaje.executeUpdate();
 
 			Servidor.log.append("El personaje " + paquetePersonaje.getNombre() + " se ha actualizado con éxito." + System.lineSeparator());
