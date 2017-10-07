@@ -18,8 +18,7 @@ public class Salir extends ComandosServer {
 			Servidor.log.append("Falló al intentar salir \n");
 
 		}
-		
-		
+
 		// Lo elimino de los clientes conectados
 		Servidor.getClientesConectados().remove(this);
 		Paquete paquete = (Paquete) gson.fromJson(cadenaLeida, Paquete.class);

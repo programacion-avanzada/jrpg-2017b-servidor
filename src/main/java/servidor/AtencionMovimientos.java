@@ -7,38 +7,38 @@ import mensajeria.Comando;
 import mensajeria.PaqueteDeMovimientos;
 
 public class AtencionMovimientos extends Thread {
-	
+
 	private final Gson gson = new Gson();
 
 	public AtencionMovimientos() {
-		
+
 	}
 
 	public void run() {
 
-		synchronized(this){
-		
+		synchronized (this) {
+
 			try {
-	
+
 				while (true) {
-			
-					// Espero a que se conecte alguien
+
+					// Espero a que se mueva alguien
 					wait();
-					
-					// Le reenvio la conexion a todos
+
+					// Le reenvio el movimiento a todos
 					for (EscuchaCliente conectado : Servidor.getClientesConectados()) {
-					
-						if(conectado.getPaquetePersonaje().getEstado() == Estado.estadoJuego){
-						
+
+						if (conectado.getPaquetePersonaje().getEstado() == Estado.estadoJuego) {
+
 							PaqueteDeMovimientos pdp = (PaqueteDeMovimientos) new PaqueteDeMovimientos(Servidor.getUbicacionPersonajes()).clone();
 							pdp.setComando(Comando.MOVIMIENTO);
 							synchronized (conectado) {
-								conectado.getSalida().writeObject(gson.toJson(pdp));									
+								conectado.getSalida().writeObject(gson.toJson(pdp));
 							}
 						}
 					}
 				}
-			} catch (Exception e){
+			} catch (Exception e) {
 				Servidor.log.append("Falló al intentar enviar paqueteDeMovimientos \n");
 			}
 		}
