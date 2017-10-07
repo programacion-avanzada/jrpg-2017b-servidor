@@ -45,13 +45,7 @@ public class ModuloNPC {
 		ScheduledExecutorService executor1 = Executors.newScheduledThreadPool(1);
 		executor1.scheduleAtFixedRate(epNPC, 0, 500, TimeUnit.MILLISECONDS); // El código de epNPC se ejecuta cada 0.5 segundos.
 
-		Runnable mNPC = new Runnable() {
-			public void run() {
-				manejarNPCs(); // Le da directivas a los NPC.
-			}
-		};
-		ScheduledExecutorService executor2 = Executors.newScheduledThreadPool(1);
-		executor2.scheduleAtFixedRate(mNPC, 0, 500, TimeUnit.MILLISECONDS); // El código de mNPC se ejecuta cada 0.5 segundos.
+		manejarNPCs(); // Le da directivas a los NPC.
 	}
 
 	private static void cargarNPCs() {
@@ -193,30 +187,28 @@ public class ModuloNPC {
 	}
 
 	private static void manejarNPCs(NPC npc) {
-		int dificultad = npc.getDificultad();
-		int movimiento = npc.getMovimiento();
+		Runnable mNPC = new Runnable() {
+			public void run() {
 
-		if (Servidor.getPersonajesConectados().get(npc.getId()).getEstado() == Estado.estadoJuego) {
-			switch (movimiento) {
-			case '1':
-				moverTipo1(npc);
-				break;
-			default:
-				moverTipo1(npc);
-				break;
-			}
-		}
+				int dificultad = npc.getDificultad();
+				int movimiento = npc.getMovimiento();
 
-		if (Servidor.getPersonajesConectados().get(npc.getId()).getEstado() == Estado.estadoBatalla) {
-			switch (dificultad) {
-			case '1':
-				batallarTipo1(npc);
-				break;
-			default:
-				batallarTipo1(npc);
-				break;
+				if (Servidor.getPersonajesConectados().get(npc.getId()).getEstado() == Estado.estadoJuego) {
+					if (movimiento == 1)
+					{
+						moverTipo1(npc);
+					}
+				} else if (Servidor.getPersonajesConectados().get(npc.getId()).getEstado() == Estado.estadoBatalla) {
+					if (dificultad == 1)
+					{
+						batallarTipo1(npc);
+					}
+				}
 			}
-		}
+		};
+		ScheduledExecutorService executor2 = Executors.newScheduledThreadPool(1);
+		executor2.scheduleAtFixedRate(mNPC, 0, 500, TimeUnit.MILLISECONDS); // El código de mNPC se ejecuta cada 0.5 segundos.
+		// Podría poner cada executor en un arrayList o mapa de executors para seguirlos
 	}
 
 	private static void moverTipo1(NPC npc) {
@@ -233,9 +225,16 @@ public class ModuloNPC {
 		Personaje personaje = crearPersonajes(paqueteNPC, paqueteEnemigo)[0];
 		Personaje enemigo = crearPersonajes(paqueteNPC, paqueteEnemigo)[1];
 
-		while (npc.getPb() != null) { // Mientras dure la batalla
+		while (npc.getPp().getEstado() == Estado.estadoBatalla && npc.getPb() != null) { // Mientras dure la batalla
+
 			Servidor.log.append(null);
-			if (npc.getPb() != null && npc.getPb().isMiTurno()) { // Si es mi turno
+			try {
+				Thread.sleep(500); // Espera por 0.5 segundos mientras el enemigo elige el ataque
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			if (npc.getPp().getEstado() == Estado.estadoBatalla && npc.getPb() != null && npc.getPb().isMiTurno()) { // Si es mi turno
 				// Calcular daño recibido
 				int daño = personaje.getSalud() - npc.getPa().getNuevaSaludEnemigo();
 				personaje.reducirSalud(daño); // Actualiza salud del NPC.
