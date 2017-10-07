@@ -14,8 +14,7 @@ public class ActualizarNpcs extends ComandosServer
 		PaqueteDeNpcs paqueteActualizarNpcs = (PaqueteDeNpcs) gson.fromJson(cadenaLeida, PaqueteDeNpcs.class);
 		escuchaCliente.setPaqueteDeNpcs(paqueteActualizarNpcs);
 		
-		if (paqueteActualizarNpcs.getPaquetesNpcs() != null)
-			Servidor.setPaqueteDeNpcs(paqueteActualizarNpcs);
+		Servidor.setPaqueteDeNpcs(paqueteActualizarNpcs);
 		
 		for(EscuchaCliente conectado : Servidor.getClientesConectados()) 
 		{
@@ -26,7 +25,7 @@ public class ActualizarNpcs extends ComandosServer
 			catch (IOException e) 
 			{
 				// TODO Auto-generated catch block
-				Servidor.log.append("Falló al intentar enviar finalizarBatalla a:" + conectado.getPaquetePersonaje().getId() + "\n");
+				Servidor.log.append("Falló al intentar actualizar npcs  \n");
 			}
 		}
 	}

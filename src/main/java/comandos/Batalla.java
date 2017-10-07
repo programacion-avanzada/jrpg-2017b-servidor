@@ -17,11 +17,9 @@ public class Batalla extends ComandosServer {
 		Servidor.log.append(escuchaCliente.getPaqueteBatalla().getId() + " quiere batallar con "
 				+ escuchaCliente.getPaqueteBatalla().getIdEnemigo() + System.lineSeparator());
 		
-		System.out.println("Llego al server: " + escuchaCliente.getPaqueteBatalla().getIdEnemigo());
 		if (escuchaCliente.getPaqueteBatalla().getIdEnemigo() > 0) // Batalló contra otro personaje
 		{
 			try {
-
 				// seteo estado de batalla
 				Servidor.getPersonajesConectados().get(escuchaCliente.getPaqueteBatalla().getId())
 						.setEstado(Estado.estadoBatalla);
@@ -53,8 +51,6 @@ public class Batalla extends ComandosServer {
 						.setEstado(Estado.estadoBatallaNpc);
 				Servidor.getPaqueteDeNpcs().getPaquetesNpcs().get(escuchaCliente.getPaqueteBatalla().getIdEnemigo() * -1)
 						.setEstado(Estado.estadoBatallaNpc);
-				//escuchaCliente.getPaqueteBatalla().setMiTurno(true);
-				escuchaCliente.getSalida().writeObject(gson.toJson(escuchaCliente.getPaqueteBatalla()));
 
 				for (EscuchaCliente conectado : Servidor.getClientesConectados()) 
 				{
