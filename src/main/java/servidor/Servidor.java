@@ -204,9 +204,9 @@ public class Servidor extends Thread
 	
 	public static boolean mensajeAAll(int contador) {
 		
-		boolean result = personajesConectados.size() != contador+1?false:true;
+		boolean result;
 			
-		if(result) // Si existe inicio sesion
+		if(result=personajesConectados.size() == contador+1) // Si existe inicio sesion
 			Servidor.log.append("Se ha enviado un mensaje a todos los usuarios" + System.lineSeparator());
 		else //Si no existe informo
 			Servidor.log.append("Uno o más de todos los usuarios se ha desconectado, se ha mandado el mensaje a los demas." + System.lineSeparator());
