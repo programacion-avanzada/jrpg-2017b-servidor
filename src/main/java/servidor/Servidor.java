@@ -181,8 +181,25 @@ public class Servidor extends Thread
 	}
 
 	public static boolean mensajeAUsuario(PaqueteMensaje pqm) {
+		boolean result = false;
+		for (Map.Entry<Integer, PaquetePersonaje> personaje : personajesConectados.entrySet()) {
+			if(personaje.getValue().getNombre().equals(pqm.getUserReceptor())) {
+				result = true;
+				break;
+			}
+		}
+		// Si existe inicio sesion
+		if (result) {
+			Servidor.log.append(pqm.getUserEmisor() + " envió mensaje a " + pqm.getUserReceptor() + System.lineSeparator());
+		} else {
+			// Si no existe informo y devuelvo false
+			Servidor.log.append("El mensaje para " + pqm.getUserReceptor() + " no se envió, ya que se encuentra desconectado." + System.lineSeparator());
+		}
+		return result;
+		/*
 		boolean result = true;
 		boolean noEncontro = true;
+		
 		for (Map.Entry<Integer, PaquetePersonaje> personaje : personajesConectados.entrySet()) {
 			if(noEncontro && (!personaje.getValue().getNombre().equals(pqm.getUserReceptor()))) {
 				result = false;
@@ -191,6 +208,7 @@ public class Servidor extends Thread
 				noEncontro = false;
 			}
 		}
+
 		// Si existe inicio sesion
 		if (result) {
 			Servidor.log.append(pqm.getUserEmisor() + " envió mensaje a " + pqm.getUserReceptor() + System.lineSeparator());
@@ -200,6 +218,7 @@ public class Servidor extends Thread
 			Servidor.log.append("El mensaje para " + pqm.getUserReceptor() + " no se envió, ya que se encuentra desconectado." + System.lineSeparator());
 			return false;
 		}
+		*/
 	}
 	
 	public static boolean mensajeAAll(int contador) {
