@@ -5,4 +5,5 @@
 **/build
 *.project
 *.classpath
-primeraBase.bd
+
+primeraBase\.bd

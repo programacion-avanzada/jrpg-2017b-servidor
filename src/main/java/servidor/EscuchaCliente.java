@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import comandos.ComandosServer;
 import mensajeria.Comando;
@@ -13,6 +14,7 @@ import mensajeria.Paquete;
 import mensajeria.PaqueteAtacar;
 import mensajeria.PaqueteBatalla;
 import mensajeria.PaqueteDeMovimientos;
+import mensajeria.PaqueteDeNpcs;
 import mensajeria.PaqueteDePersonajes;
 import mensajeria.PaqueteFinalizarBatalla;
 import mensajeria.PaqueteMovimiento;
@@ -35,7 +37,8 @@ public class EscuchaCliente extends Thread {
 	private PaqueteUsuario paqueteUsuario;
 	private PaqueteDeMovimientos paqueteDeMovimiento;
 	private PaqueteDePersonajes paqueteDePersonajes;
-
+	private PaqueteDeNpcs paqueteDeNpcs;
+	
 	public EscuchaCliente(String ip, Socket socket, ObjectInputStream entrada, ObjectOutputStream salida) throws IOException {
 		this.socket = socket;
 		this.entrada = entrada;
@@ -54,7 +57,6 @@ public class EscuchaCliente extends Thread {
 		
 			while (!((paquete = gson.fromJson(cadenaLeida, Paquete.class)).getComando() == Comando.DESCONECTAR)){
 								
-
 				comand = (ComandosServer) paquete.getObjeto(Comando.NOMBREPAQUETE);
 				comand.setCadena(cadenaLeida);
 				comand.setEscuchaCliente(this);
@@ -166,5 +168,16 @@ public class EscuchaCliente extends Thread {
 	public void setPaqueteUsuario(PaqueteUsuario paqueteUsuario) {
 		this.paqueteUsuario = paqueteUsuario;
 	}
+
+	public PaqueteDeNpcs getPaqueteDeNpcs()
+	{
+		return paqueteDeNpcs;
+	}
+
+	public void setPaqueteDeNpcs(PaqueteDeNpcs paqueteDeNpcs)
+	{
+		this.paqueteDeNpcs = paqueteDeNpcs;
+	}
+
 }
 
